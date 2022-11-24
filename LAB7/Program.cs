@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 namespace LAB7
 {
     
@@ -32,6 +33,21 @@ namespace LAB7
         {
             A.DisplaySpis();
         }
+
+        public void InFile()
+        {
+            string s = "";
+            foreach (T item in A.members)
+            {
+                s = s + item + " ";
+            }
+            File.WriteAllText("LAB7.txt", s);
+        }
+        public void OUtfile()
+        {
+            Console.WriteLine(File.ReadAllText("LAB7.txt"));
+        }
+
 
         public class Set<T>
         {
@@ -169,7 +185,11 @@ namespace LAB7
             A.Add(1);
             A.Add(2);
             A.LookThrough();
-            A.Delete(1);
+            A.Add(1);
+            A.LookThrough();
+            A.Add(3);
+            A.Add(4);
+            A.Delete(4);
             A.LookThrough();
             try
             {
@@ -188,6 +208,8 @@ namespace LAB7
             CollectionType<Question> Qtype = new CollectionType<Question>();
             Qtype.Add(Q);
             Qtype.LookThrough();
+            A.InFile();
+            A.OUtfile();
         }
 
  }
